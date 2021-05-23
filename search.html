@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap & jQuery -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+     
+     <title>Job Search</title>
+
+    <style>
+  
+    /* footer */
+      .fa-stack:hover {
+        opacity: .7;
+      }
+
+    /* join network */
+      .join-network-btn:hover {
+        opacity: .5;
+      }
+
+    /* working at woburn */
+      .location-box {
+        min-height: 150px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+      }
+      .location-box-card {
+        opacity: .7;
+        background-color: #ffffff;
+        max-width: 50%;
+        height: 100%;
+      }
+      @media screen and (max-width:540px) { /*for small screens make text cover the whole card */
+        .location-box-card {min-width: 100%;}
+      }
+      .location-box-card p {
+        font-size: 10pt;
+        text-decoration: none;
+      }
+    /* job alert button */
+      .job-alert:hover {
+        background-color: lightgrey !important;
+      }
+      .job-alert-link:hover {
+        text-decoration: none;
+      }
+
+      .pagination.li {
+        border-radius: 0;
+        border: none;
+      }
+
+
+    </style>
+
+    <script>
+      $(document).ready(function(){
+          // Add minus icon for collapse element which is open by default
+          $(".collapse.show").each(function(){
+            $(this).prev(".panel-heading").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+          });
+          
+          // Toggle plus minus icon on show hide of collapse element
+          $(".collapse").on('show.bs.collapse', function(){
+            $(this).prev(".panel-heading").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+          }).on('hide.bs.collapse', function(){
+            $(this).prev(".panel-heading").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+          });
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+<!-- nav bar -->
+  <nav class="navbar navbar-expand-md bg-light navbar-light p-0 m-0">
+        
+    <div class="grid col-12">
+
+      <!--row 1-->
+      <div class="row px-4 py-2">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="./index.html">
+          <img src="./theme/woburn-hospital_logo.png" alt="logo" style="width:200px;">
+        </a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler my-2 ml-auto" style="margin-right: -10px;" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Links -->
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./search.html">Search Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./details.html">Saved Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Test Link</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--row 2-->
+      <div class="row">
+        <form class="col-12 p-3">
+          <div class="input-group col-centered">
+            <input type="text" class="form-control mr-1" style="height: 32px;" placeholder="Keyword, Job Title, skills">
+            <input type="text" class="form-control ml-1" style="height: 32px;" placeholder="Enter a location">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-primary btn-sm ml-2" style="width:200px;">Find Jobs</button>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div> <!-- end grid inlay -->
+  </nav>
+    
+<!--main div-->
+  <div class="container-fluid justify-content-center" style="background-color: #ffffff;">
+    <div class="row justify-content-around">
+      
+      <!--left column-->
+      <div class="col-11 col-md-4 col-lg-3 text-left p-0 my-4">
+
+        <div class="col"> <!--refine search header-->
+          <div class="row text-left pb-2" style="border-bottom: 3px solid grey;">
+            <p class="text-muted m-0 p-0" style="font-size:16pt;">Refine your search</p>
+            <a href="" class="pl-2" style="font-size: 9pt; padding-top: 8pt;">Clear All</a>
+          </div>
+        </div>
+
+        <div class="container p-0">
+          <div class="panel-group">
+            <!--Department-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse1">
+                  <a class="text-muted">Department</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse show">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;3 North Med/Surg</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Home Health</label><span class="badge badge-light float-right mt-1">14</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Arbours Homecare</label><span class="badge badge-light float-right mt-1">13</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Cardiology Services</label><span class="badge badge-light float-right mt-1">13</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Mattoon Clinic</label><span class="badge badge-light float-right mt-1">10</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Cancer Program</label><span class="badge badge-light float-right mt-1">9</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Med/Surg hs</label><span class="badge badge-light float-right mt-1">9</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Emergency</label><span class="badge badge-light float-right mt-1">8</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Share's Therapy Services</label><span class="badge badge-light float-right mt-1">8</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="deptopt">&nbsp;&nbsp;Dietary</label><span class="badge badge-light float-right mt-1">7</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--City-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse2">
+                  <a class="text-muted">City</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="cityopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="cityopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="cityopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="cityopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="cityopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--State-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse3">
+                  <a class="text-muted">State</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="stateopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="stateopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="stateopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="stateopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="stateopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--Job Family-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse4">
+                  <a class="text-muted">Job Family</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse4" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="jfamopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="jfamopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="jfamopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="jfamopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="jfamopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--Facility-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse5">
+                  <a class="text-muted">Facility</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse5" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="facopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="facopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="facopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="facopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="facopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--Schedule-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse6">
+                  <a class="text-muted">Schedule</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse6" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="schedopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="schedopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="schedopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="schedopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="schedopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+            <!--Shift-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="row panel-title py-1 m-0" data-toggle="collapse" href="#collapse7">
+                  <a class="text-muted">Shift</a>
+                  <a class="text-muted mr-3 ml-auto"><i class="fa fa-plus"></i></a>
+                </p>
+              </div>
+              <div id="collapse7" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="shiftopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="shiftopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="shiftopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="shiftopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                  <li class="list-group-item p-1 text-muted border-0"><div class="radio border-bottom"><label class="m-0 p-0"><input type="radio" name="shiftopt">&nbsp;&nbsp;List group item</label><span class="badge badge-light float-right mt-1">41</span></div></li>
+                </ul>
+                <div class="panel-footer mb-3"><a href="" style="font-size:10pt;">+ Show more</a></div>
+              </div>
+            </div>
+
+          </div> <!--close panel group-->
+        </div><!--closes panel group container-->
+
+        <!--join talent network card-->
+        <div class="container-fluid text-left p-4 mt-5 border" style="background-color: #ffffff;">
+          <p>Interested in working for Woburn Hospital?</p>
+          <p>Take the first step by joining our Talent Network today!</p>
+          <a href="">
+            <button class="join-network-btn btn btn-primary btn-sm" style="background-color: #062b49 !important";>Join Our Talent Network</button>
+          </a>
+        </div>
+
+      </div><!--closes left column-->
+
+      <!--right column-->
+      <div class="col-11 col-md-7 col-lg-8 text-left my-4 p-0 m-0">
+
+        <h1 class="text-muted ml-4">Job Search Results</h1>
+
+        <!--header image-->
+        <div class="container-fluid text-center">
+            <div class="row justify-content-center">
+              <div class="row col location-box justify-content-start p-0" style="background-image: url('./theme/category-image-1.jpg');"> <!--to center a rounded div-->
+                  <div class="col location-box-card text-left p-4 align-self-start"> <!--to put an opaque card in the div-->
+                    <p class="mb-2" style="font-size: 16pt;">Working at Woburn Hospital</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+        <!--maps div-->
+        <div class="container-fluid my-4 p-0">
+
+          <div class="col"> <!--map div-->
+            <div class="row justify-content-end pb-2">
+              <a data-toggle="collapse" href="#collapsemap">Hide map<i class="fas fa-map ml-1"></i></a>
+            </div>
+
+            <div id="collapsemap" class="row collapse show">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55614103.69267283!2d-146.6174810657536!3d31.704542925036755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b30b71698e729d%3A0x131328839761a382!2sNorth%20America!5e0!3m2!1sen!2sus!4v1621738747657!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div> <!--closes map div-->
+
+        <!--sign up for job alerts-->
+        <div class="container-fluid p-0 m-0">
+          <a class="job-alert-link" href="" style="color: black !important;">
+            <div class="job-alert col text-center rounded p-2 mt-4 mb-3" style="background-color: #f9f9fb;">
+              <i class="fas fa-bell"></i>&nbspSet up Job Alert
+            </div>
+          </a>
+        </div>
+
+
+        <!--search results-->
+        <div class="container-fluid p-0 m-0">
+          
+          <!--sort results-->
+          <div class="container-fluid p-0 m-0 border-bottom" style="background-color:#f9f9fb;">
+            <form>
+              <div class="form-group row align-items-center justify-content-end py-2 m-0">
+                <label class="m-0 p-0">Sort by:</label>
+                <select class="form-control ml-2" style="width:200px;">
+                  <option value="male">Default</option>
+                  <option value="female">Option 2</option>
+                  <option value="other">Option 3</option>
+                </select>
+              </div>
+            </form>
+          </div>
+
+          <!--view results-->
+          <!--result block-->
+          <div class="container-fluid border-bottom">
+            <div class="row justify-content-around align-items-center">
+
+              <div class="col col-md-5 m-0 p-0 pt-3"> <!--column 1-->
+                <a href="" style="font-size: 12pt;">General Surgeon</a>
+                <p class="text-muted pt-3" style="font-size:10pt;">
+                  <i class="fas fa-map-marker"></i>  Danville, NH, United States<br>
+                  <i class="fas fa-hospital"></i>  Hospital Main Campus<br>
+                  <i class="fas fa-clock"></i>  Full time - Varies<br>
+                  Req #: 2654-674749501126213674
+                </p>
+              </div>
+
+              <div class="col col-md-3 m-0 p-0 pt-3 mb-auto"> <!--column 2-->
+                <a class="m-0" href="">
+                  <button class="btn btn-primary m-0" style="width: 150px;">Apply Now</button>
+                </a>
+                <p class="text-muted pt-4" style="font-size:10pt;">
+                  <i class="fas fa-sitemap"></i>  3 North Med/Surg<br>
+                  <i class="fas fa-tag"></i>  Physician<br>
+                </p>
+              </div>
+
+              <div class="col col-md-3 p-0"> <!--column 3-->
+                <div class="row justify-content-end p-0 m-0">
+                  <a class="text-muted align-self-end" style="font-size:12pt;">
+                    <i class="fas fa-calendar"></i>&nbsp&nbspJan 15, 2020
+                  </a>
+                </div>
+              </div>
+
+            </div>  <!--row-->
+          </div> <!--ends result block-->
+
+          <!--result block-->
+          <div class="container-fluid border-bottom">
+            <div class="row justify-content-around align-items-center">
+
+              <div class="col col-md-5 m-0 p-0 pt-3"> <!--column 1-->
+                <a href="" style="font-size: 12pt;">Billing Representative</a>
+                <p class="text-muted pt-3" style="font-size:10pt;">
+                  <i class="fas fa-map-marker"></i>  Woburn, MA, United States<br>
+                  <i class="fas fa-clock"></i>  Needs Basis - Flex-time<br>
+                  Req #: 2670-674749501126213687
+                </p>
+              </div>
+
+              <div class="col col-md-3 m-0 p-0 pt-3 mb-auto"> <!--column 2-->
+                <a class="m-0" href="">
+                  <button class="btn btn-primary m-0" style="width: 150px;">Apply Now</button>
+                </a>
+                <p class="text-muted pt-4" style="font-size:10pt;">
+                  <i class="fas fa-tag"></i>  Administrative/Clerical<br>
+                </p>
+              </div>
+
+              <div class="col col-md-3 p-0"> <!--column 3-->
+                <div class="row justify-content-end p-0 m-0">
+                  <a class="text-muted align-self-end" style="font-size:12pt;">
+                    <i class="fas fa-calendar"></i>&nbsp&nbspJan 15, 2020
+                  </a>
+                </div>
+              </div>
+
+            </div>  <!--row-->
+          </div> <!--ends result block-->
+
+          <!--result block-->
+          <div class="container-fluid border-bottom">
+            <div class="row justify-content-around align-items-center">
+
+              <div class="col col-md-5 m-0 p-0 pt-3"> <!--column 1-->
+                <a href="" style="font-size: 12pt;">Advanced Practice Nurse/Trauma Coordinator</a>
+                <p class="text-muted pt-3" style="font-size:10pt;">
+                  <i class="fas fa-map-marker"></i>  Danville, NH, United States<br>
+                  <i class="fas fa-hospital"></i>  Hospital Main Campus<br>
+                  <i class="fas fa-clock"></i>  Full time - Days<br>
+                  Req #: 3139-674749518134116375
+                </p>
+              </div>
+
+              <div class="col col-md-3 m-0 p-0 pt-3 mb-auto"> <!--column 2-->
+                <a class="m-0" href="">
+                  <button class="btn btn-primary m-0" style="width: 150px;">Apply Now</button>
+                </a>
+                <p class="text-muted pt-4" style="font-size:10pt;">
+                  <i class="fas fa-sitemap"></i>  3 North Med/Surg<br>
+                  <i class="fas fa-tag"></i>  Nursing<br>
+                </p>
+              </div>
+
+              <div class="col col-md-3 p-0"> <!--column 3-->
+                <div class="row justify-content-end p-0 m-0">
+                  <a class="text-muted align-self-end" style="font-size:12pt;">
+                    <i class="fas fa-calendar"></i>&nbsp&nbspJan 15, 2020
+                  </a>
+                </div>
+              </div>
+
+            </div>  <!--row-->
+          </div> <!--ends result block-->
+          
+          <div class="container-fluid p-0 m-0 my-3">
+            <form class="form-inline row p-0 m-0 justify-content-end">
+              <div class="form-group">
+                <label>Page</label>
+                <input type="text" class="form-control mx-2" placeholder="1" style="width:40px;">
+                of 10
+              </div>
+              <div class="form-group">
+                <ul class="pagination m-0 ml-4 p-0">
+                  <li class="page-item active"><a class="page-link" style="background-color:#062b49; color:#ffffff; border-radius:0 !important;border:none !important;" href="#"><i class="fas fa-chevron-left"></i></a></li>
+                  <li class="page-item"><a class="page-link" style="background-color:#0c75bc; color:#ffffff; border-radius:0 !important;border:none !important;" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+
+        </div> <!--closes search results-->
+
+
+        <!--join talent network-->
+        <div class="col justify-content-center p-0 m-0 border rounded" style="background-color:#ffffff;">
+          <div class="row justify-content-center p-0 m-0">
+            <div class="row col-8 text-left justify-content-start align-items-center px-3 pt-2 mr-3">
+              <p style="font-size:12pt";>Can't find the job you're looking for?</p>
+              <p class="text-muted" style="font-size: 9pt;">Join our Talent Network to opt-in to all our current and future opportunities!</p>
+            </div>
+            <div class="row col-4 text-left justify-content-start align-items-center">
+              <a href="">
+                <button class="join-network-btn btn btn-primary btn-sm" style="background-color: #062b49 !important";>Join Our Talent Network</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div> <!--closes right column-->
+
+    </div>
+
+  </div>
+
+
+  </body>
+
+
+<footer>
+  <!-- section social -->
+  <!-- Here we stack the fa icons to produce the background circle -->
+  <div class="justify-content-center justify-content-md-end p-4 text-black" style="background-color: #0c75bc;">
+    <div class="row justify-content-center justify-content-md-end">
+      <div class="col-11 col-md-4 col-lg-3"> <!-- contains follow us and social icons -->
+
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <span class="text-white pb-2">Follow Us</span>
+        </div>
+  
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-facebook-f fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-twitter fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-youtube fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-linkedin-in fa-stack-1x"></i>
+            </span>
+          </a>
+        </div>
+    </div>
+
+
+    </div>
+  </div>
+
+  <!-- section copyright -->
+  <section class="text-center text-white py-3" style="background-color: #062c4a;">© 2019 Woburn Hospital</section>
+</footer>
+
+</html>

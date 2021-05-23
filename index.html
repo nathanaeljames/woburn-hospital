@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap & jQuery -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+     
+     <title>Home</title>
+
+    <style>
+    /* jumbotron */
+      .jumbotron {
+        position: relative; 
+        height: 350px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .jumbotron::before {   /* this allows us to alter the opacity of background image without affecting child elements (e.g. text) */
+        content: "";
+        background-image: url("./theme/hero_image.jpg");
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.4;
+        background-position: center;
+      }
+    /* some centering help */
+      .col-centered {
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    /* career opportunities */
+      .category-images a {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .category-image-1 {
+        background-image: url('./theme/category-image-1.jpg');
+        opacity: .2;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top:0; bottom:0; left:0; right:0;
+        box-shadow: 0 0 5px black;
+      }
+      .category-image-1:hover {opacity: 0.5;}
+      .category-image-2 {
+        background-image: url('./theme/category-image-2.jpg');
+        opacity: .2;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top:0; bottom:0; left:0; right:0;
+        box-shadow: 0 0 5px black;
+      }
+      .category-image-2:hover {opacity: 0.5;}
+      .category-image-3 {
+        position: absolute;
+        top:0; bottom:0; left:0; right:0;
+      }
+      .category-image-3:hover {
+        background-color: #F0F8FF;
+        opacity: .5;
+      }
+    /* featured jobs */
+      hr {
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 1px;
+        background-color: #0c75bc;
+      }
+      .shadow {
+        position: absolute;
+        bottom:0;
+        height: 120px;
+        opacity: .2;
+        background-color: grey;
+        margin-left: -50px;
+      }
+      .featured-job {
+        background-color: #FFFFFF;
+        min-height: 170px;
+        box-shadow: 0 0 5px grey;
+      }
+      .featured-job a {
+        font-size: 12pt;
+      }
+      .featured-job p {
+        font-size: 9pt;
+      }
+      .featured-job:hover {
+        transform: scale(1.1);
+        margin-right: 6%; /* fallback for older browsers that don't support calc() */
+        margin-right: calc(5% + 10px);
+        margin-left: 5%;
+      }
+      .featured-job-card {
+        position: absolute;
+        top:0; bottom:0; left:0; right:0;
+      }
+      .featured-job-search {
+        box-shadow: 0 0 5px grey;
+      }
+      .featured-job-search:hover {
+        transform: scale(1.1);
+        margin-right: 6%; /* fallback for older browsers that don't support calc() */
+        margin-right: calc(5% + 10px);
+        margin-left: 5%; 
+      }
+    /* explore locations */
+      .location-box {
+        border-radius: 20px;
+        min-height: 250px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+      }
+      .location-box:hover {
+        /*transform: scale(1.1);*/
+        opacity: .7;
+      }
+      .location-box-card {
+        opacity: .7;
+        background-color: #ffffff;
+        max-width: 51%;
+        height: 100%;
+      }
+      @media screen and (max-width:540px) { /*for small screens make text cover the whole card */
+        .location-box-card {min-width: calc(100% + 40px);}
+      }
+      .location-box-card p {
+        font-size: 10pt;
+        text-decoration: none;
+      }
+    /* join network */
+      .join-network-btn:hover {
+        opacity: .5;
+      }
+    /* working at Woburn */
+      .job-cards-div {
+        box-shadow: -5px -5px 8px 1px rgba(0, 0, 0, 0.2), 5px 5px 8px 1px rgba(0, 0, 0, 0.19);
+        background-color: #ffffff;
+      }
+      .job-card-img {
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        width: 100%;
+      }
+
+    /* footer */
+      .fa-stack:hover {
+        opacity: .7;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+<!-- nav bar -->
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="./index.html">
+        <img src="./theme/woburn-hospital_logo.png" alt="logo" style="width:200px;">
+      </a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./search.html">Search Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./details.html">Saved Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Test Link</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+<!-- jumbotron -->
+  <div class="jumbotron text-center text-black">
+    <div class="container" style="position: relative;">
+      <h1>Careers at Woburn Hospital</h1>      
+      <p>United Passion for Providing Excellent Health Care to All</p>
+      <div class="container-fluid">
+        <form class="p-4">
+          <div class="input-group row col-xs-6 col-lg-7 col-centered">
+            <input type="text" class="form-control" style="height: 32px;" placeholder="Enter keyword/s">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-primary btn-sm ml-2">Search</button>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Explore Career Opportunities -->
+  <div class="container-fluid text-center pb-4 category-images">
+      <h2 class="text-muted">Explore Career Opportunities</h2>
+        <div class="row justify-content-center">
+          
+          <div class="col-md-3" style="background-color: #F0F8FF; height: 200px; position: relative;">
+            <a style="color: black;" href="">
+              <div class="category-image-1"></div>
+              <div class="centered">
+                <i class="fas fa-hospital fa-2x"></i><br>
+                Provider Opportunities
+              </div> 
+            </a>
+          </div>
+
+          <div class="col-md-3" style="background-color: #F0F8FF; height: 200px; position: relative;">
+            <a style="color: black;" href="">
+              <div class="category-image-2"></div>
+              <div class="centered">
+                <i class="fas fa-user-md fa-2x"></i><br>
+                Nursing
+              </div> 
+            </a>
+          </div>
+
+          <div class="col-md-3" style="background-color: #0c75bc; height: 200px; position: relative;">
+            <a style="color: white;" href="">
+              <div class="category-image-3"></div>
+              <div class="centered">
+                <i class="fas fa-search fa-2x"></i><br>
+                Browse All Opportunities
+              </div>
+            </a>
+          </div>
+        </div>
+  </div>
+
+<!-- Featured Jobs -->
+  <div class="container-fluid text-center p-4" style="margin: 70px 0 0 0;">
+    <h2 class="font-weight-bold">FEATURED JOBS</h2>
+    <hr/>
+
+    <div class="row justify-content-center">
+      <div class="col-12 row justify-content-center pb-3">
+        <div class="shadow col-11 col-md-9"></div>
+
+        <div class="col-md-3 m-2 text-left featured-job p-4">
+          <a href="https://www.google.com">
+            <div class="featured-job-card"></div>
+            <a class="text-primary">Clerk <i class="fas fa-star" style="color:orange;"></i></a>
+            <p class="text-muted">
+              <i class="fas fa-tag"></i>  Administrative/ Clerical<br>
+              <i class="fas fa-sitemap"></i>  Share's Therapy Service<br>
+              <i class="fas fa-hospital"></i>  Rehab Services<br>
+              <i class="fas fa-map-marker"></i>  Danville, NH, United States<br>
+            </p>
+          </a>
+        </div>
+
+        <div class="col-md-3 m-2 text-left featured-job p-4">
+          <a href="">
+            <div class="featured-job-card"></div>
+            <a class="text-primary">Care Coordinator <i class="fas fa-star" style="color:orange;"></i></a>
+            <p class="text-muted">
+              <i class="fas fa-tag"></i>  Nursing<br>
+              <i class="fas fa-sitemap"></i>  Mattoon Clinic<br>
+              <i class="fas fa-hospital"></i>  Physician Services Clinic<br>
+              <i class="fas fa-map-marker"></i>  Danville, NH, United States<br>
+            </p>
+          </a>
+        </div>
+
+        <div class="col-md-3 m-2 text-left featured-job p-4">
+          <a href="">
+            <div class="featured-job-card"></div>
+            <a class="text-primary">Advanced Practice Nurse - 1912 <i class="fas fa-star" style="color:orange;"></i></a>
+            <p class="text-muted">
+              <i class="fas fa-tag"></i>  Nursing<br>
+              <i class="fas fa-sitemap"></i>  Cancer Program<br>
+              <i class="fas fa-hospital"></i>  Home Health Services<br>
+              <i class="fas fa-map-marker"></i>  Danville, NH, United States<br>
+            </p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-fluid row mx-auto justify-content-center">
+      <a class="col-11 col-md-10 m-2" href="">
+        <div class="text-left p-2 featured-job-search">See all Featured Jobs</div>
+      </a>
+    </div>
+
+  </div>
+
+<!-- Explore Locations -->
+  <div class="container-fluid text-center p-4" style="background-image: linear-gradient(#f8f9fb, #ffffff);">
+    <h2 class="text-muted pb-3">Explore Our Locations in San Francisco Bay Area</h2>
+
+    <div class="row justify-content-center p-2">
+      <div class="row col-11 col-md-8 location-box justify-content-start" style="background-image: url('./theme/hero_image.jpg');"> <!--to center a rounded div-->
+          <div class="col location-box-card text-left p-4 align-self-start" style="margin-left:-20px;"> <!--to put an opaque card in the div-->
+            <p style="font-size: 16pt;">Oakland</p>
+            <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center p-2">
+      <div class="row col-11 col-md-8 location-box justify-content-end" style="background-image: url('./theme/hero_image.jpg');"> <!--to center a rounded div-->
+          <div class="col location-box-card text-left p-4 align-self-end" style="margin-right:-20px;"> <!--to put an opaque card in the div-->
+            <p style="font-size: 16pt;">Woburn</p>
+            <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center p-2">
+      <div class="row col-11 col-md-8 location-box justify-content-start" style="background-image: url('./theme/accessory-image-2.jpg');"> <!--to center a rounded div-->
+          <div class="col location-box-card text-left p-4 align-self-start" style="margin-left:-20px;"> <!--to put an opaque card in the div-->
+            <p style="font-size: 16pt;">Hayward</p>
+            <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center p-2">
+      <div class="row col-11 col-md-8 location-box justify-content-end" style="background-image: url('./theme/accessory-image-1.jpg');"> <!--to center a rounded div-->
+          <div class="col location-box-card text-left p-4 align-self-end" style="margin-right:-20px;"> <!--to put an opaque card in the div-->
+            <p style="font-size: 16pt;">San Leandro</p>
+            <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center p-2">
+      <div class="row col-11 col-md-8 location-box justify-content-start" style="background-image: url('./theme/hero_image.jpg');"> <!--to center a rounded div-->
+          <div class="col location-box-card text-left p-4 align-self-start" style="margin-left:-20px;"> <!--to put an opaque card in the div-->
+            <p style="font-size: 16pt;">Boston</p>
+            <p class="pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et atque ipsum a repudiandae numquam. Voluptates similique asperiores nam atque excepturi sed doloribus quisquam vero cupiditate? Debitis, inventore rem. Laudantium, minus?</p>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- Join Network -->
+  <div class="container-fluid text-center p-4" style="background-color: #f0f0f0;">
+
+    <div class="row justify-content-center">
+      <div class="row col-11 col-md-7 justify-content-center">
+        <div class="row col-7 text-left justify-content-start align-items-center mr-3">
+          <h2 class="text-muted" style="font-size: 16pt;">Join Our<br>Talent Network</h2>
+          <p class="text-muted" style="font-size: 9pt;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, exercitationem. Vitae aperiam voluptatem Ipsam, exercitationem. Vitae aperiam voluptatem</p>
+        </div>
+        <div class="row col-5 text-left justify-content-start align-items-center">
+          <a href="">
+            <button class="join-network-btn btn btn-primary btn-sm" style="background-color: #062b49 !important";>Join Our Talent Network</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- Working at Woburn -->
+  <div class="container-fluid text-center" style="background-image: linear-gradient(#f8f9fb, #ffffff);">
+    <div class="row text-center justify-content-center p-4">
+      <div class="col-11 col-md-6 col-lg-7 text-left">
+        <h2 class="text-muted" style="font-size: 18pt;">Working at Woburn Hospital</h2>
+        <p class="text-muted" style="font-size: 10pt;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti repellendus dignissimos molestias nobis velit qui cum cumque ab natus facilis, voluptatum architecto esse? Cum distinctio temporibus in, nesciunt sit vero?
+        <br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat aspernatur eveniet suscipit veniam corporis expedita vitae, quidem delectus cupiditate repudiandae nihil sapiente libero eaque reiciendis laborum vero molestiae recusandae voluptas.
+        <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ratione totam sed. Nesciunt possimus dolore maxime nulla accusantium beatae ex saepe unde deleniti reiciendis omnis asperiores quidem modi, corrupti libero?
+        <br><br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima fugiat ex molestiae asperiores reprehenderit iste exercitationem provident optio repellat nemo modi dolorum ducimus esse, quae dolores neque veritatis vel sint!
+        <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis consectetur, voluptas, neque quam nemo autem magni voluptates illo voluptate facilis dolorum deleniti adipisci vitae dignissimos quos beatae ratione culpa numquam.
+        <br><br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima fugiat ex molestiae asperiores reprehenderit iste exercitationem provident optio repellat nemo modi dolorum ducimus esse, quae dolores neque veritatis vel sint!
+        <br><br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima fugiat ex molestiae asperiores reprehenderit iste exercitationem provident optio repellat nemo modi dolorum ducimus esse, quae dolores neque veritatis vel sint!
+        <br><br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima fugiat ex molestiae asperiores reprehenderit iste exercitationem provident optio repellat nemo modi dolorum ducimus esse, quae dolores neque veritatis vel sint!  
+      </p>
+      </div>
+      <div class="col-11 col-md-5 col-lg-4 text-left p-4">
+        <div class="job-cards-div">
+
+          <div class="job-card text-left justify-content-center p-2">
+            <div class="job-card-img" style="background-image: url('./theme/accessory-image-1.jpg');"></div>
+            <h2 class="text-muted pt-2" style="font-size:12pt;">Benefits</h2>
+            <p class="text-muted" style="font-size:10pt;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quasi tempora aliquid placeat ut facere magni eos soluta perferendis hic aperiam quaerat</p>
+            <a href="">Learn More ></a>
+          </div>
+
+          <div class="job-card text-left justify-content-center p-2">
+            <div class="job-card-img" style="background-image: url('./theme/accessory-image-2.jpg');"></div>
+            <h2 class="text-muted pt-2" style="font-size:12pt;">Professional Development</h2>
+            <p class="text-muted" style="font-size:10pt;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quasi tempora aliquid placeat ut facere magni eos soluta perferendis hic aperiam quaerat</p>
+            <a href="">Learn More ></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+
+<footer>
+  <!-- section social -->
+  <!-- Here we stack the fa icons to produce the background circle -->
+  <div class="justify-content-center justify-content-md-end p-4 text-black" style="background-color: #0c75bc;">
+    <div class="row justify-content-center justify-content-md-end">
+      <div class="col-11 col-md-4 col-lg-3"> <!-- contains follow us and social icons -->
+
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <span class="text-white pb-2">Follow Us</span>
+        </div>
+  
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-facebook-f fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-twitter fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-youtube fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-linkedin-in fa-stack-1x"></i>
+            </span>
+          </a>
+        </div>
+    </div>
+
+
+    </div>
+  </div>
+
+  <!-- section copyright -->
+  <section class="text-center text-white py-3" style="background-color: #062c4a;">© 2019 Woburn Hospital</section>
+</footer>
+
+</html>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap & jQuery -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+     
+     <title>Job Details</title>
+
+    <style>
+    /* share menu */
+      .share-menu i {
+        color: grey;
+      }
+      .share-menu a:hover {
+        text-decoration: none;
+        opacity: .6;
+      }
+    /* join network */
+      .join-network-btn:hover {
+        opacity: .5;
+      }
+    /* footer */
+      .fa-stack:hover {
+        opacity: .7;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+<!-- nav bar -->
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="./index.html">
+        <img src="./theme/woburn-hospital_logo.png" alt="logo" style="width:200px;">
+      </a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./search.html">Search Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./details.html">Saved Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Test Link</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+<!--details main div-->
+  <div class="container-fluid justify-content-center" style="background-color: #ffffff;">
+    <div class="row justify-content-around">
+      
+      <!--left column-->
+      <div class="col-11 col-md-6 col-lg-7 text-left my-4">
+        
+        <h1 class="text-muted">General Surgeon</h1>
+      <!-- stats div contains fa icons and apply now button -->
+        <div class="row text-left justify-content-center">
+          
+          <div class="col col-md-6"> <!--text on the left-->
+            <p class="text-muted">
+              <i class="fas fa-map-marker"></i>  Danville, NH<br>
+              <i class="fas fa-hospital"></i>  Hospital Main Campus<br>
+              <i class="fas fa-sitemap"></i>  3 North Med/Surg<br>
+              <i class="fas fa-clock"></i>  Full time - Varies<br>
+              <i class="fas fa-tag"></i>  Physician<br>
+              Req #: 2654-674749501126213674<br>
+              Posted: January 15, 2020
+            </p>
+          </div>
+
+          <div class="col col-md-6"> <!-- buttons on the right -->
+            <!--div to hold buttons-->
+            <div class="row justify-content-center justify-content-md-end">
+                <a href="">
+                  <button class="btn btn-primary m-1" style="width: 180px;">Apply Now</button>
+                </a>
+            </div>
+            <!--div to hold buttons-->
+            <div class="row justify-content-center justify-content-md-end">
+              <a href="">
+                <button class="btn btn-primary m-1 bg-light" style="width: 180px; color: black; border: none;">Save Job</button>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      <!--text div-->
+        <div class="text-left">
+          <p class="pt-2" style="font-weight: bold; font-size: 14pt">Summary</p>
+          <p style="font-size: 9pt; color: grey;">Excellent General Surgery Opportunity</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam fugit nihil nam veniam? Ipsum tenetur doloremque similique quo? Fugit corrupti beatae ipsum laboriosam commodi impedit amet ullam repudiandae in facere?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex maiores, saepe commodi amet, ipsam enim itaque libero omnis eum explicabo corrupti consequatur illo repudiandae suscipit, deleniti veniam nobis? Laborum, voluptatibus?</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nihil perferendis ipsa a sint velit tempora accusantium blanditiis quidem voluptates id necessitatibus, amet natus assumenda ex illo voluptatem nobis vel?</p>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad odit officiis provident numquam obcaecati beatae eum repudiandae, nemo repellat tenetur nostrum blanditiis laboriosam, error consequuntur tempore voluptatem atque fugit culpa.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti explicabo sed atque, eveniet asperiores ipsum illo? Voluptatum distinctio possimus libero, placeat sit nulla repellendus incidunt iure unde id, tempore error.</p>
+        </div>
+
+      <!--share div contains share icons and apply now button-->
+        <div class="row text-left justify-content-center mt-5">
+
+          <div class="col col-md-6 share-menu"> <!--share buttons on the left-->
+            <div class="row justify-content-center justify-content-md-start">
+              <p class="text-muted p-2">Share:  
+                <a href="">
+                  <i class="fas fa-envelope px-1"></i>
+                </a>
+                <a href="">
+                  <i class="fab fa-twitter-square px-1"></i>
+                </a>
+                <a href="">
+                  <i class="fab fa-facebook-square px-1"></i>
+                </a>
+                <a href="">
+                  <i class="fab fa-linkedin px-1"></i>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col col-md-6"> <!--button on the right-->
+            <!--div to hold buttons-->
+            <div class="row justify-content-center justify-content-md-end">
+              <a href="">
+                <button class="btn btn-primary m-1" style="width: 180px;">Apply Now</button>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      
+      <!--right column-->
+      <div class="col-11 col-md-5 col-lg-4 text-left p-0 my-4">
+        <!--job posts-->
+        <div class="container-fluid job-post-div p-0" style="background-color: #FDFDFD;">
+
+          <div class="px-4 py-2 job-post-header rounded-top" style="background-color: gainsboro;">
+            Related Jobs
+          </div>
+
+          <div class="job-post text-left justify-content-center px-4 py-1" style="border-top: 2px solid gainsboro;">
+            <a href="" class="pt-2" style="font-size:11pt;">General Surgeon</a>
+            <p style="font-size:10pt;"><i class="fas fa-map-marker text-muted"></i>  Danville, NH</p>
+          </div>
+
+          <div class="job-post text-left justify-content-center px-4 py-1" style="border-top: 2px solid gainsboro;">
+            <a href="" class="pt-2" style="font-size:11pt;">Boston Medical Director Critical Care Intensivist Opportunity</a>
+            <p style="font-size:10pt;"><i class="fas fa-map-marker text-muted"></i>  Danville, NH</p>
+          </div>
+
+          <div class="job-post text-left justify-content-center px-4 py-1" style="border-top: 2px solid gainsboro;">
+            <a href="" class="pt-2" style="font-size:11pt;">Practical Manager - OBGYN</a>
+            <p style="font-size:10pt;"><i class="fas fa-map-marker text-muted"></i>  Boston, MA</p>
+          </div>
+
+          <div class="job-post text-left justify-content-center px-4 py-1" style="border-top: 2px solid gainsboro;">
+            <a href="" class="pt-2" style="font-size:11pt;">Chief Medical Officer</a>
+            <p style="font-size:10pt;"><i class="fas fa-map-marker text-muted"></i>  Boston, MA</p>
+          </div>
+
+          <div class="job-post text-left justify-content-center px-4 py-1" style="border-top: 2px solid gainsboro;">
+            <a href="" class="pt-2" style="font-size:11pt;">Family Medicine Physician</a>
+            <p style="font-size:10pt;"><i class="fas fa-map-marker text-muted"></i>  Boston, MA</p>
+          </div>
+
+        </div>
+
+        <!--join talent network card-->
+        <div class="container-fluid text-left p-4 mt-5 border" style="background-color: #ffffff;">
+          <p>Not the right fit?</p>
+          <p>Join our Talent Network to opt-in to all our current and future opportunities!</p>
+          <a href="">
+            <button class="join-network-btn btn btn-primary btn-sm" style="background-color: #062b49 !important";>Join Our Talent Network</button>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  </body>
+
+
+<footer>
+  <!-- section social -->
+  <!-- Here we stack the fa icons to produce the background circle -->
+  <div class="justify-content-center justify-content-md-end p-4 text-black" style="background-color: #0c75bc;">
+    <div class="row justify-content-center justify-content-md-end">
+      <div class="col-11 col-md-4 col-lg-3"> <!-- contains follow us and social icons -->
+
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <span class="text-white pb-2">Follow Us</span>
+        </div>
+  
+        <div class="row text-center justify-content-center justify-content-md-start">
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-facebook-f fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-twitter fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-youtube fa-stack-1x"></i>
+            </span>
+          </a>
+          <a href="" class="text-reset">
+            <span class="fa-stack fa-1x">
+              <i class="fa fa-circle fa-stack-2x" style="color: #ffffff;"></i>
+              <i class="fab fa-linkedin-in fa-stack-1x"></i>
+            </span>
+          </a>
+        </div>
+    </div>
+
+
+    </div>
+  </div>
+
+  <!-- section copyright -->
+  <section class="text-center text-white py-3" style="background-color: #062c4a;">© 2019 Woburn Hospital</section>
+</footer>
+
+</html>
